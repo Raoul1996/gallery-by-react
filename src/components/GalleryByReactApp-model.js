@@ -1,6 +1,3 @@
-/**
- * Created by RaoulChou on 2017/1/5.
- */
 'use strict';
 
 var React = require('react/addons');
