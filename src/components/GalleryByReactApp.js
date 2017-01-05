@@ -91,7 +91,9 @@ var GalleryByReactApp = React.createClass({
             topImgSpliceIndex = 0,
             imgsArrangeCenterArr = imgsArrangeArr.splice(centerIndex, 1);
             //首先居中中心元素centerIndex
-            imgsArrangeCenterArr[0].pos = centerPos;
+            imgsArrangeCenterArr[0] = {
+                pos: centerPos
+            };
 
             //取出要布局上侧的图片的状态信息
             topImgSpliceIndex = Math.ceil(Math.random() * (imgsArrangeArr.length - topImgNum));
@@ -100,9 +102,11 @@ var GalleryByReactApp = React.createClass({
             //布局上侧的图片
 
             imgsArrangeTopArr.forEach(function (value, index) {
-                imgsArrangeTopArr[index].pos = {
-                    top: getRangeRandom(vPosRangeTopY[0], vPosRangeTopY[1]),
-                    left: getRangeRandom(vPosRangeX[0], vPosRangeX[1])
+                imgsArrangeTopArr[index] = {
+                   pos: {
+                       top: getRangeRandom(vPosRangeTopY[0], vPosRangeTopY[1]),
+                       left: getRangeRandom(vPosRangeX[0], vPosRangeX[1])
+                   }
                 };
             });
             //布局左右两侧的图片
@@ -114,10 +118,13 @@ var GalleryByReactApp = React.createClass({
                 }else {
                     hPosRangeLORX = hPosRangeRightSecX;
                 }
-                imgsArrangeArr[i].pos = {
-                    top: getRangeRandom(hPosRangeY[0], hPosRangeY[1]),
-                    left: getRangeRandom(hPosRangeLORX[0], hPosRangeLORX[1])
+                imgsArrangeArr[i] = {
+                    pos: {
+                        top: getRangeRandom(hPosRangeY[0], hPosRangeY[1]),
+                        left: getRangeRandom(hPosRangeLORX[0], hPosRangeLORX[1])
+                    }
                 };
+            }
                 if (imgsArrangeTopArr && imgsArrangeTopArr[0]) {
                    imgsArrangeArr.splice(topImgSpliceIndex, 0, imgsArrangeTopArr[0]);
                 }
@@ -127,7 +134,7 @@ var GalleryByReactApp = React.createClass({
                 this.setState({
                     imgsArrangeArr: imgsArrangeArr
                 });
-            }
+
 
     },
     getInitialState: function () {
