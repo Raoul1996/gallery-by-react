@@ -63,7 +63,7 @@ var ImgFigure = React.createClass({
             }.bind(this));
 
             if (this.props.arrange.isCenter) {
-                styleObj.zIndex = 99999;
+                styleObj.zIndex = 11;
             }
         }
         var imgFigureClassName = 'img-figure';
@@ -86,10 +86,32 @@ var ImgFigure = React.createClass({
         );
     }
 });
-var controllerUnit = React.crateClass({
+
+var ControllerUnit = React.createClass({
+
+    handleClick: function (e) {
+
+        if (this.props.arrange.isCenter) {
+            this.props.inverse();
+        } else {
+            this.props.center();
+        }
+
+      e.stopPropagation();
+      e.preventDefault();
+    },
     render: function() {
+
+        var controllerUnitClassName = 'controller-unit';
+
+        if (this.props.arrange.isCenter) {
+            controllerUnitClassName += ' is-center';
+        }
+        if (this.props.arrange.isInverse) {
+            controllerUnitClassName += ' is-inverse';
+        }
         return (
-            <span className='controller-unit' onClick=
+            <span className={controllerUnitClassName} onClick={this.handleClick}></span>
         );
     }
 });
@@ -273,7 +295,8 @@ var GalleryByReactApp = React.createClass({
           }
 
             imgFigures.push(<ImgFigure key={index} data={value} ref={'imgFigure' + index} arrange={this.state.imgsArrangeArr[index]} inverse={this.inverse(index)} center={this.center(index)}/>);
-        }.bind(this));
+            controllerUnits.push(<ControllerUnit key={index} arrange={this.state.imgsArrangeArr[index]} inverse={this.inverse(index)} center={this.center(index)}/>);
+      }.bind(this));
 
     return (
         <section className="stage" ref="stage">

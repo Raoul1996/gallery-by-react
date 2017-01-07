@@ -19,7 +19,7 @@ module.exports = {
   devtool: 'sourcemap',
   entry: [
       'webpack/hot/only-dev-server',
-      './src/components/GalleryByReactApp-model.js'
+      './src/components/GalleryByReactApp.js'
   ],
 
   stats: {

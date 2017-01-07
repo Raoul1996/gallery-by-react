@@ -37,6 +37,7 @@
     "karma-script-launcher": "~0.1.0",
     "karma-webpack": "^1.5.0",
     "load-grunt-tasks": "~0.6.0",
+    "lodash.clonedeep": "^4.5.0",
     "node-sass": "^4.1.1",
     "react-hot-loader": "^1.0.7",
     "sass-loader": "^1.0.1",
